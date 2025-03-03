@@ -29,3 +29,14 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
+
+process.on("SIGINT", () => {
+  console.log("Stopping server...");
+  server.close(() => {
+    console.log("Server stopped. Port released.");
+    process.exit(0);
+  });
+});
+
+
+
