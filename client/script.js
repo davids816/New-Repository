@@ -10,8 +10,8 @@ let addList = ''; // Initialize addList to store the todo items
                 // Using index + 1 to display the correct numbering
                 addList += `<p>${index + 1}. ${todo.title}</p>`; 
             });
-            console.log(data); // Optional: Check the fetched data in console
-            document.getElementById('todoList').innerHTML = addList; // Assuming "list" is the id of the element where you want to display the todos
+            console.log(data); //  Check the fetched data in console
+            document.getElementById('todoList').innerHTML = addList; 
         })
         .catch(error => console.error('Error fetching todos:', error));
 }
@@ -38,10 +38,10 @@ function displayTodos(todos) {
 // Handle form submission
 todoForm.addEventListener('submit', async (e) => {
 // add your code  
-document.getElementsByTagName("button").submit()
+button.addEventListener('click', displayTodos);
 });
 
 // Load todos when page loads
 fetchTodos();
-displayTodos();
+
 
