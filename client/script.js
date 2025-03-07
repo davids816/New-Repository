@@ -1,47 +1,36 @@
 // Get DOM HTML Elements
+const todoList = document.getElementById("todoList");
+const todoInput = document.getElementById("todoInput");
 // Fetch all todos when page loads
 async function fetchTodos() {
-// add your code
-let addList = ''; // Initialize addList to store the todo items
-    fetch(`api/todo`)
-        .then(response => response.json())
-        .then(data => {
-            data.forEach((todo, index) => {
-                // Using index + 1 to display the correct numbering
-                addList += `<p>${index + 1}. ${todo.title}</p>`; 
-            });
-            console.log(data); //  Check the fetched data in console
-            document.getElementById('todoList').innerHTML = addList; 
-        })
-        .catch(error => console.error('Error fetching todos:', error));
+  // add your code
+  try {
+    fetch("/api/todos")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        data.forEach((todos) => {
+          displayTodos(todos);
+        });
+      });
+  } catch (error) {}
 }
 
 // Display todos in the list
 function displayTodos(todos) {
-// add your code
-    // Get the element where you want to display the todos
-    const todoList = document.getElementById('todoList');
-    
-    // Clear any existing items in the list
-    todoList.innerHTML = '';
-
-    // Loop through each todo and create a list item
-    todos.forEach(todo => {
-        const listItem = document.createElement('li'); // Create a new list item
-        listItem.textContent = todo; // Set the text of the list item
-        todoList.appendChild(listItem); // Append the list item to the list
-    });
-
-
+todoList.innerHTML += 
+`
+<input type="hidden" name="todoName" value="${todos.title}">
+<p>${todos.title}</p>
+`
+console.log(todos.title)
 }
 
 // Handle form submission
 todoForm.addEventListener('submit', async (e) => {
-// add your code  
-button.addEventListener('click', displayTodos);
+// add your code
+document.getElementsByTagName("button").submit();
 });
 
 // Load todos when page loads
 fetchTodos();
-
-

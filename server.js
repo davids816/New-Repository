@@ -18,7 +18,8 @@ mongoose.connect(process.env.MONGODB_URI)
   .catch(err => console.error('MongoDB connection error:', err));
 
   // Use routesrs
-app.use('/api', todoRouter);
+  app.use('/api', todoRouter);
+  app.use(express.static('client'));
 
 // Basic route
 app.get('/', (req, res) => {
