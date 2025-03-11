@@ -29,7 +29,17 @@ console.log(todos.title)
 // Handle form submission
 todoForm.addEventListener('submit', async (e) => {
 // add your code
-document.getElementsByTagName("button").submit();
+event.preventDefault();
+const Input = document.getElementById("todoInput").value;
+todoList += Input;
+document.getElementsByTagName("button")
+
+todoList.innerHTML += 
+`
+<input type="hidden" name="todoName" value="${todos.title}">
+<p>${Input}</p>
+`
+console.log(Input)
 });
 
 // Load todos when page loads
