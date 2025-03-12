@@ -22,6 +22,8 @@ todoList.innerHTML +=
 `
 <input type="hidden" name="todoName" value="${todos.title}">
 <p>${todos.title}</p>
+
+<button type="reset">Remove</button>
 `
 console.log(todos.title)
 }
@@ -31,13 +33,14 @@ todoForm.addEventListener('submit', async (e) => {
 // add your code
 event.preventDefault();
 const Input = document.getElementById("todoInput").value;
-todoList += Input;
-document.getElementsByTagName("button")
+const button = document.getElementsByTagName("button")
 
 todoList.innerHTML += 
 `
-<input type="hidden" name="todoName" value="${todos.title}">
-<p>${Input}</p>
+<input type="hidden" name="todoName" value="${Input}">
+<p>${Input}</p> 
+
+<button type="reset">Remove</button>
 `
 console.log(Input)
 });
