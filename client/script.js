@@ -40,8 +40,20 @@ todoList.innerHTML +=
 <input type="hidden" name="todoName" value="${Input}">
 <p>${Input}</p> 
 
-<button type="reset">Remove</button>
+<button type="reset" id="remove">Remove</button>
 `
+let btn =document.getElementById("remove")
+btn.addEventListener('click', removeFromCart)
+
+function removeFromCart(event) {
+  const todos = event.target.getAttribute('value');
+  console.log(todos);
+  const productIndex = todoList.indexOf(
+    (todos) => todos.name == todos,
+  );
+  todoList.splice(productIndex - 1, 1);
+}
+
 console.log(Input)
 });
 

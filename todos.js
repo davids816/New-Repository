@@ -32,4 +32,16 @@ router.post('/todos', async (req, res) => {
     }
 });
 
+router.delete('/todos/:id', async (req, res) => {
+    const { id } = req.params;  
+    try {
+        const deletedTodo = await Todo.findByIdAndDelete(id);  
+        if (!deletedTodo) return res.status(404).json({ message: "Todo not found" });  
+        res.status(200).json(deletedTodo);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
+
 export { router as todoRouter };
+
